@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Singapore Story — Sec 2 History Revision</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F1E6;
+    --surface:#FFFFFF;
+    --ink:#26221E;
+    --ink-soft:#5B534B;
+    --line:#E4DCC9;
+
+    --red:#B7332C;
+    --red-soft:#F3DEDA;
+    --gold:#B4791E;
+    --gold-soft:#F3E5CA;
+    --teal:#2C6E5F;
+    --teal-soft:#DCEAE4;
+
+    --accent:var(--red);
+    --accent-soft:var(--red-soft);
+
+    --radius-lg:26px;
+    --radius-md:18px;
+    --radius-sm:12px;
+    --shadow:0 10px 28px -14px rgba(38,34,30,.28);
+  }
+  html{scroll-behavior:smooth; scroll-padding-top:96px;}
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Nunito',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  h1,h2,h3,h4{font-family:'Baloo 2',sans-serif; margin:0; letter-spacing:.2px;}
+  p{line-height:1.6; margin:0 0 10px;}
+  ::selection{background:var(--accent); color:#fff;}
+
+  /* ---------- Header / Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(245,241,230,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    padding:14px 20px calc(14px + env(safe-area-inset-top,0px));
+    padding-top:calc(14px + env(safe-area-inset-top,0px));
+  }
+  .hdr-inner{max-width:980px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .brand{display:flex; align-items:baseline; gap:10px;}
+  .brand h1{font-size:1.35rem; color:var(--ink); font-weight:700;}
+  .brand span{font-size:.78rem; color:var(--ink-soft); font-weight:600;}
+  nav.tabs{display:flex; gap:8px; flex-wrap:wrap;}
+  nav.tabs button{
+    font-family:'Baloo 2',sans-serif; font-weight:600; font-size:.95rem;
+    border:2px solid transparent; background:var(--surface); color:var(--ink-soft);
+    padding:9px 18px; border-radius:999px; cursor:pointer;
+    transition:transform .15s ease, border-color .15s ease, color .15s ease, background .15s ease;
+  }
+  nav.tabs button:hover{transform:translateY(-1px);}
+  nav.tabs button.active[data-ch="6"]{background:var(--red); color:#fff;}
+  nav.tabs button.active[data-ch="7"]{background:var(--gold); color:#fff;}
+  nav.tabs button.active[data-ch="8"]{background:var(--teal); color:#fff;}
+
+  /* ---------- Layout ---------- */
+  main{max-width:980px; margin:0 auto; padding:28px 20px 90px;}
+  section.chapter{display:none; animation:fade .35s ease;}
+  section.chapter.active{display:block;}
+  @keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+
+  .hero{
+    border-radius:var(--radius-lg);
+    padding:34px 30px;
+    margin-bottom:26px;
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero.ch6{background:linear-gradient(135deg,#8B241F,#B7332C 60%,#C9583F);}
+  .hero.ch7{background:linear-gradient(135deg,#8A5D13,#B4791E 60%,#CDA23F);}
+  .hero.ch8{background:linear-gradient(135deg,#1E4A40,#2C6E5F 60%,#4C9482);}
+  .hero .eyebrow{font-size:.85rem; font-weight:700; opacity:.85; margin-bottom:6px;}
+  .hero h2{font-size:2rem; line-height:1.15; max-width:640px;}
+  .hero p.lede{margin-top:10px; max-width:560px; font-size:1.02rem; opacity:.95;}
+  .hero .qmark{
+    position:absolute; right:-10px; bottom:-40px; font-family:'Baloo 2',sans-serif;
+    font-size:11rem; font-weight:800; opacity:.14; line-height:1;
+  }
+
+  .timeline{display:flex; gap:8px; flex-wrap:wrap; margin-top:18px;}
+  .timeline span{
+    background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35);
+    padding:6px 13px; border-radius:999px; font-size:.82rem; font-weight:700;
+  }
+
+  h3.section-title{
+    font-size:1.3rem; margin:34px 0 14px; padding-bottom:8px;
+    border-bottom:3px solid var(--line); display:flex; align-items:center; gap:10px;
+  }
+  .ch6 h3.section-title{border-color:var(--red-soft);}
+  .ch7 h3.section-title{border-color:var(--gold-soft);}
+  .ch8 h3.section-title{border-color:var(--teal-soft);}
+
+  /* ---------- Cards / Accordions ---------- */
+  details.card{
+    background:var(--surface); border-radius:var(--radius-md);
+    box-shadow:var(--shadow); margin-bottom:14px; overflow:hidden;
+    border:1px solid var(--line);
+  }
+  details.card summary{
+    list-style:none; cursor:pointer; padding:16px 20px;
+    font-family:'Baloo 2',sans-serif; font-weight:600; font-size:1.05rem;
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
+  }
+  details.card summary::-webkit-details-marker{display:none;}
+  details.card summary .plus{
+    flex:0 0 auto; width:28px; height:28px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--accent-soft); color:var(--accent); font-size:1.2rem; font-weight:800;
+    transition:transform .25s ease;
+  }
+  details[open] summary .plus{transform:rotate(45deg);}
+  .card .body{padding:0 22px 20px; color:var(--ink);}
+  .card .body p:first-child{margin-top:0;}
+
+  .ch6 details.card summary .plus{background:var(--red-soft); color:var(--red);}
+  .ch7 details.card summary .plus{background:var(--gold-soft); color:var(--gold);}
+  .ch8 details.card summary .plus{background:var(--teal-soft); color:var(--teal);}
+
+  .twocol{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:10px 0;}
+  @media (max-width:640px){.twocol{grid-template-columns:1fr;}}
+  .box{
+    background:#FBF9F3; border:1px solid var(--line); border-radius:var(--radius-sm);
+    padding:14px 16px;
+  }
+  .box h4{font-size:.98rem; margin-bottom:8px; color:var(--ink);}
+  .box ul{margin:0; padding-left:20px;}
+  .box li{margin-bottom:6px; line-height:1.5;}
+
+  ul.plain{margin:6px 0; padding-left:20px;}
+  ul.plain li{margin-bottom:6px; line-height:1.55;}
+
+  table.data{width:100%; border-collapse:collapse; margin:10px 0 4px; font-size:.92rem;}
+  table.data th, table.data td{border:1px solid var(--line); padding:8px 10px; text-align:left;}
+  table.data th{background:#F1ECDD; font-family:'Baloo 2',sans-serif; font-weight:600;}
+  table.data td.num{text-align:center;}
+
+  .tag{
+    display:inline-block; font-size:.72rem; font-weight:800; letter-spacing:.3px;
+    padding:3px 10px; border-radius:999px; margin-bottom:8px;
+  }
+  .ch6 .tag{background:var(--red-soft); color:var(--red);}
+  .ch7 .tag{background:var(--gold-soft); color:var(--gold);}
+  .ch8 .tag{background:var(--teal-soft); color:var(--teal);}
+
+  /* ---------- PEEL reveal ---------- */
+  .peel-prompt{
+    border:2px dashed var(--line); border-radius:var(--radius-sm);
+    padding:14px 16px; margin:14px 0 6px; background:#FAF7EE;
+  }
+  .peel-prompt p.q{font-weight:700; margin-bottom:10px;}
+  .reveal-btn{
+    font-family:'Baloo 2',sans-serif; font-weight:600; font-size:.88rem;
+    border:none; padding:9px 16px; border-radius:999px; cursor:pointer;
+    color:#fff; transition:filter .15s ease;
+  }
+  .reveal-btn:hover{filter:brightness(1.08);}
+  .ch6 .reveal-btn{background:var(--red);}
+  .ch7 .reveal-btn{background:var(--gold);}
+  .ch8 .reveal-btn{background:var(--teal);}
+
+  .peel-answer{
+    display:none; margin-top:14px; border-top:1px solid var(--line); padding-top:14px;
+  }
+  .peel-answer.shown{display:block;}
+  .peel-line{margin-bottom:9px; padding-left:14px; border-left:4px solid var(--line);}
+  .peel-line b{font-family:'Baloo 2',sans-serif; font-weight:700;}
+  .ch6 .peel-line{border-color:var(--red);}
+  .ch7 .peel-line{border-color:var(--gold);}
+  .ch8 .peel-line{border-color:var(--teal);}
+  .peel-line.p{border-color:var(--ink-soft);}
+
+  .quote-src{
+    background:#F1ECDD; border-radius:var(--radius-sm); padding:14px 16px;
+    font-style:italic; color:var(--ink-soft); font-size:.94rem; margin:10px 0;
+    border-left:4px solid var(--accent);
+  }
+
+  footer{text-align:center; padding:30px 20px 50px; color:var(--ink-soft); font-size:.85rem;}
+
+  /* ---------- Mnemonic chip ---------- */
+  .mnemonic{
+    display:flex; align-items:center; gap:10px; margin:10px 0 0;
+    background:#FBF3E1; border:1px dashed #D8B36B; border-radius:var(--radius-sm);
+    padding:9px 14px; font-size:.88rem;
+  }
+  .mnemonic .icon{font-size:1.15rem;}
+  .mnemonic b{font-family:'Baloo 2',sans-serif;}
+
+  /* ---------- Flashcard launcher ---------- */
+  .fc-launcher{
+    position:fixed; right:18px; bottom:calc(18px + env(safe-area-inset-bottom,0px));
+    z-index:60; font-family:'Baloo 2',sans-serif; font-weight:600; font-size:.95rem;
+    border:none; padding:13px 20px; border-radius:999px; color:#fff; cursor:pointer;
+    box-shadow:0 12px 24px -10px rgba(38,34,30,.5); display:flex; align-items:center; gap:8px;
+    transition:transform .15s ease;
+  }
+  .fc-launcher:hover{transform:translateY(-2px);}
+  body.ctx6 .fc-launcher{background:var(--red);}
+  body.ctx7 .fc-launcher{background:var(--gold);}
+  body.ctx8 .fc-launcher{background:var(--teal);}
+
+  /* ---------- Flashcard modal ---------- */
+  .fc-modal{
+    position:fixed; inset:0; background:rgba(38,34,30,.55); z-index:100;
+    display:none; align-items:center; justify-content:center; padding:20px;
+    padding-top:calc(20px + env(safe-area-inset-top,0px));
+  }
+  .fc-modal.open{display:flex;}
+  .fc-panel{
+    background:var(--bg); border-radius:var(--radius-lg); width:100%; max-width:520px;
+    padding:22px; box-shadow:0 30px 60px -20px rgba(0,0,0,.5); max-height:92vh; overflow:auto;
+  }
+  .fc-panel-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;}
+  .fc-panel-head h3{font-size:1.15rem;}
+  .fc-close{border:none; background:var(--line); width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:1.1rem; line-height:1;}
+  .fc-progress{font-size:.85rem; color:var(--ink-soft); font-weight:700; margin-bottom:10px;}
+
+  .fc-stage{perspective:1400px; margin-bottom:16px;}
+  .fc-card{
+    position:relative; min-height:220px; border-radius:var(--radius-md);
+    transform-style:preserve-3d; transition:transform .5s cubic-bezier(.4,.2,.2,1);
+    cursor:pointer;
+  }
+  .fc-card.flipped{transform:rotateY(180deg);}
+  .fc-face{
+    position:absolute; inset:0; backface-visibility:hidden; border-radius:var(--radius-md);
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    padding:26px; font-size:1.08rem; font-weight:700; line-height:1.45;
+    box-shadow:var(--shadow);
+  }
+  .fc-face.front{background:var(--surface); color:var(--ink);}
+  .fc-face.back{transform:rotateY(180deg); color:#fff; font-weight:600; font-size:1rem;}
+  body.ctx6 .fc-face.back{background:linear-gradient(135deg,#8B241F,#B7332C);}
+  body.ctx7 .fc-face.back{background:linear-gradient(135deg,#8A5D13,#B4791E);}
+  body.ctx8 .fc-face.back{background:linear-gradient(135deg,#1E4A40,#2C6E5F);}
+  .fc-face .fc-tag{position:absolute; top:14px; left:18px; font-size:.7rem; opacity:.75; font-weight:800; letter-spacing:.4px;}
+
+  .fc-controls{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+  .fc-btn{
+    font-family:'Baloo 2',sans-serif; font-weight:600; border:none; padding:10px 16px;
+    border-radius:999px; cursor:pointer; background:var(--surface); border:1px solid var(--line);
+    color:var(--ink); font-size:.9rem;
+  }
+  .fc-btn.primary{color:#fff;}
+  body.ctx6 .fc-btn.primary{background:var(--red);}
+  body.ctx7 .fc-btn.primary{background:var(--gold);}
+  body.ctx8 .fc-btn.primary{background:var(--teal);}
+  .fc-hint{text-align:center; font-size:.78rem; color:var(--ink-soft); margin-top:8px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hdr-inner">
+    <div class="brand">
+      <h1>The Singapore Story</h1>
+      <span>Sec 2 History revision</span>
+    </div>
+    <nav class="tabs">
+      <button data-ch="6" class="active">Ch 6 · Occupation</button>
+      <button data-ch="7">Ch 7 · Road to Self-Rule</button>
+      <button data-ch="8">Ch 8 · Merger &amp; Separation</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ================= CHAPTER 6 ================= -->
+<section class="chapter ch6 active" id="ch6">
+  <div class="hero ch6">
+    <div class="eyebrow">CHAPTER 6</div>
+    <h2>What did the people in Singapore experience during the Japanese Occupation?</h2>
+    <p class="lede">1942–1945: the British surrender, three and a half years of Japanese rule, and how ordinary people survived and responded.</p>
+    <div class="timeline"><span>15 Feb 1942 — British surrender</span><span>1942–45 — Occupation</span></div>
+    <div class="qmark">占</div>
+  </div>
+
+  <h3 class="section-title">6.1 · How did the Japanese establish control?</h3>
+  <p>The Japanese used two broad approaches to control the people of Singapore: <b>using force</b> and <b>winning loyalty</b>.</p>
+  <div class="mnemonic"><span class="icon">🧩</span><span><b>Memory hook — Force:</b> "PIPS" — Punish, Imprison (Allied soldiers), Purge (Sook Ching), Squeeze (businessmen).</span></div>
+  <div class="mnemonic"><span class="icon">🧩</span><span><b>Memory hook — Loyalty:</b> the "3 P's" — Propaganda, Perks (benefits), Pride (culture).</span></div>
+
+  <details class="card">
+    <summary><span>Using force</span><span class="plus">+</span></summary>
+    <div class="body">
+      <div class="twocol">
+        <div class="box">
+          <h4>Meting out harsh punishments</h4>
+          <ul>
+            <li>Looters caught after the British surrender were executed and their heads displayed publicly (e.g. outside Cathay Building).</li>
+            <li>The Kempeitai (Japanese Military Police) arrested anti-Japanese suspects, who were beaten or tortured for information.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Imprisoning Allied soldiers</h4>
+          <ul>
+            <li>British, Australian and other Allied Europeans — including women and children — were imprisoned.</li>
+            <li>They were made to march publicly from Bukit Timah Road to Changi Prison.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Operation Sook Ching</h4>
+          <ul>
+            <li>Aimed to identify and eliminate anti-Japanese elements among locals.</li>
+            <li>Chinese men aged 18–50 were screened; suspected anti-Japanese individuals were killed. An estimated 25,000–50,000 people died.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Coercing Chinese businessmen</h4>
+          <ul>
+            <li>Chinese businessmen had earlier funded China's war effort against Japan.</li>
+            <li>The Overseas Chinese Association was forced to "gift" 50 million Straits dollars as punishment.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="card">
+    <summary><span>Winning loyalty</span><span class="plus">+</span></summary>
+    <div class="body">
+      <div class="twocol">
+        <div class="box">
+          <h4>Using propaganda</h4>
+          <ul>
+            <li>Portrayed themselves as liberators freeing Asians from colonial rule, via posters and radio.</li>
+            <li>Promoted the "Greater East Asia Co-Prosperity Sphere" — Asians free from Western control.</li>
+            <li>Backed the Indian National Army (led by Subhas Chandra Bose) to fight the British in India.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Providing benefits</h4>
+          <ul>
+            <li>Free schooling and accommodation — e.g. 20,000 students given free textbooks (1944).</li>
+            <li>Rice, sugar and salt distributed to the poor for Hari Raya Puasa; Malays and Indians paid lower Causeway crossing fees than the Chinese.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Imposing Japanese culture</h4>
+          <ul>
+            <li>Nippon-go (Japanese language) replaced English in schools, with rewards for fluency.</li>
+            <li>Nippon Seishin (Japanese spirit) promoted — students sang "Kimigayo" and bowed to the Emperor's portrait, and learned kendo and judo.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <div class="peel-prompt">
+    <p class="q">Explain: How did the use of force enable the Japanese to establish control over Singapore?</p>
+    <button class="reveal-btn" onclick="toggleReveal(this)">Reveal PEEL answer</button>
+    <div class="peel-answer">
+      <div class="peel-line p"><b>Point —</b> The use of force enabled the Japanese to establish control by removing opposition and creating fear.</div>
+      <div class="peel-line"><b>Evidence —</b> Harsh punishments and Operation Sook Ching eliminated those suspected of resisting Japanese rule, while Allied soldiers were imprisoned and Chinese businessmen were financially punished.</div>
+      <div class="peel-line"><b>Explain —</b> This weakened organised resistance and removed people who could lead it. At the same time, the brutality of these actions frightened the population, making them less willing to oppose Japanese authority, while punishing businessmen ensured economic cooperation.</div>
+      <div class="peel-line"><b>Link —</b> With opposition weakened and the population intimidated into compliance, the Japanese were able to consolidate firm control over Singapore.</div>
+    </div>
+  </div>
+
+  <div class="peel-prompt">
+    <p class="q">Explain: How did gaining the support and loyalty of the people enable the Japanese to establish control over Singapore?</p>
+    <button class="reveal-btn" onclick="toggleReveal(this)">Reveal PEEL answer</button>
+    <div class="peel-answer">
+      <div class="peel-line p"><b>Point —</b> Winning loyalty enabled the Japanese to establish control by encouraging voluntary cooperation rather than relying only on fear.</div>
+      <div class="peel-line"><b>Evidence —</b> Propaganda presented the Japanese as liberators through the Co-Prosperity Sphere; benefits such as free textbooks and festive rations were given to locals; and Japanese culture and language were promoted through schools and competitions.</div>
+      <div class="peel-line"><b>Explain —</b> By presenting themselves as liberators and providing tangible benefits, the Japanese gave people reasons to see their rule as legitimate and even beneficial, reducing the motivation to resist. Promoting Japanese language and spirit also aimed to reshape people's identity and loyalty over time.</div>
+      <div class="peel-line"><b>Link —</b> This made some locals more willing to accept and even support Japanese rule, complementing the use of force and helping the Japanese maintain control with less active resistance.</div>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.2 · What was daily life like under the Japanese?</h3>
+  <details class="card">
+    <summary><span>Food shortages &amp; disease</span><span class="plus">+</span></summary>
+    <div class="body">
+      <p>War disrupted trade, cutting food imports Singapore relied on. Rice, salt and sugar were rationed or sold at extremely high black-market prices.</p>
+      <p>Healthcare and sanitation worsened, and malnutrition weakened people's immune systems. Beriberi, pneumonia and dysentery were the main causes of death.</p>
+    </div>
+  </details>
+  <details class="card">
+    <summary><span>Relocations</span><span class="plus">+</span></summary>
+    <div class="body">
+      <p>When growing food locally failed to solve shortages, the Japanese relocated people out of Singapore to farm elsewhere.</p>
+      <div class="twocol">
+        <div class="box"><h4>Endau (Johor)</h4><ul><li>Chinese settlers moved here.</li><li>Rich soil, ample water — considered a success.</li></ul></div>
+        <div class="box"><h4>Bahau (Negeri Sembilan)</h4><ul><li>Eurasians &amp; Chinese Roman Catholics moved here.</li><li>Hilly, poor soil — people resorted to eating rats and maggots.</li></ul></div>
+      </div>
+    </div>
+  </details>
+  <details class="card">
+    <summary><span>Leisure &amp; entertainment</span><span class="plus">+</span></summary>
+    <div class="body">
+      <p>The Japanese allowed limited leisure to maintain an appearance of a happy, harmonious society: radio programmes (Japanese songs, Malay music, Hokkien/Cantonese news), Japanese films and propaganda screenings, and sports like football, baseball, tennis and badminton — plus boxing at Kim Seng Road and police band performances at the Botanic Gardens.</p>
+    </div>
+  </details>
+
+  <div class="peel-prompt">
+    <p class="q">Explain: Why was life difficult for ordinary people during the Japanese Occupation?</p>
+    <button class="reveal-btn" onclick="toggleReveal(this)">Reveal PEEL answer</button>
+    <div class="peel-answer">
+      <div class="peel-line p"><b>Point —</b> Life was harsh mainly because of shortages of necessities, worsening disease, and forced relocation.</div>
+      <div class="peel-line"><b>Evidence —</b> Rice, salt and sugar were rationed or bought at high black-market prices; poor sanitation and malnutrition raised deaths from beriberi, pneumonia and dysentery; people relocated to Bahau faced poor soil and had to eat rats and maggots.</div>
+      <div class="peel-line"><b>Explain —</b> The war had disrupted trade and the food imports Singapore depended on, while wartime conditions worsened healthcare. Relocation was meant to ease shortages, but often created new suffering where the land could not support farming.</div>
+      <div class="peel-line"><b>Link —</b> These hardships show that daily survival, not just political control, defined most people's experience of the Occupation.</div>
+    </div>
+  </div>
+
+  <h3 class="section-title">6.3 · How did locals respond to Japanese rule?</h3>
+  <details class="card">
+    <summary><span>Collaboration and resistance</span><span class="plus">+</span></summary>
+    <div class="body">
+      <div class="twocol">
+        <div class="box">
+          <h4>Collaborated</h4>
+          <ul>
+            <li>Some Malays policed communities and reported anti-Japanese suspects.</li>
+            <li>Some Chinese acted as informants during Operation Sook Ching.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Resisted</h4>
+          <ul>
+            <li><b>MPAJA</b> — worked with the British; carried out sabotage and distributed anti-Japanese materials.</li>
+            <li><b>Force 136</b> — secret British-organised group; member Lim Bo Seng gathered intelligence and organised sabotage.</li>
+            <li><b>Elizabeth Choy</b> — smuggled food, money, medicine and messages to British POWs; tortured but revealed nothing.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <div class="peel-prompt">
+    <p class="q">Explain: Why did some locals collaborate with the Japanese while others resisted?</p>
+    <button class="reveal-btn" onclick="toggleReveal(this)">Reveal PEEL answer</button>
+    <div class="peel-answer">
+      <div class="peel-line p"><b>Point —</b> People's responses varied because of different calculations about survival, safety and loyalty.</div>
+      <div class="peel-line"><b>Evidence —</b> Some Malays policed communities and some Chinese acted as informants during Sook Ching, while others — like the MPAJA, Force 136, and Elizabeth Choy — sabotaged, gathered intelligence, or aided British POWs.</div>
+      <div class="peel-line"><b>Explain —</b> Collaboration often came from a need for safety or reward, encouraged by Japanese propaganda and benefits, whereas resistance was driven by anti-Japanese sentiment, loyalty to the British, or ties to resistance networks.</div>
+      <div class="peel-line"><b>Link —</b> This shows the population's response to occupation was not uniform, but shaped by each person's circumstances and beliefs.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CHAPTER 7 ================= -->
+<section class="chapter ch7" id="ch7">
+  <div class="hero ch7">
+    <div class="eyebrow">CHAPTER 7</div>
+    <h2>How did the people in Singapore respond to British rule after World War II?</h2>
+    <p class="lede">From a shattered colonial myth to full internal self-government: elections, riots, and the fight for Merdeka.</p>
+    <div class="timeline"><span>1948 Elections</span><span>1955 Elections</span><span>1956–57 Merdeka Talks</span><span>1959 Elections</span></div>
+    <div class="qmark">自</div>
+  </div>
+
+  <h3 class="section-title">7.1 · Why did people want self-government?</h3>
+  <details class="card">
+    <summary><span>External developments</span><span class="plus">+</span></summary>
+    <div class="body">
+      <div class="box" style="margin-bottom:12px;">
+        <h4>Weakening of colonial rule</h4>
+        <ul>
+          <li>The Japanese Occupation shattered the myth of White Man's superiority.</li>
+          <li>Other colonies gained independence — India from Britain (1947), Indonesia from the Dutch (1949) — encouraging locals that independence was achievable.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h4>Growing influence of communism</h4>
+        <ul>
+          <li>Communism's promise of equality appealed to those treated unfairly under colonial rule; China turned communist in 1949.</li>
+          <li>The Malayan Communist Party (MCP), remembered for resisting the Japanese, fought the British in the Malayan Emergency (1948–1960) to end colonial rule.</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <div class="peel-prompt">
+    <p class="q">Complete: As a result, people in Singapore began to believe that colonial rule was...</p>
+    <button class="reveal-btn" onclick="toggleReveal(this)">Reveal PEEL answer</button>
+    <div class="peel-answer">
+      <div class="peel-line p"><b>Point —</b> ...no longer acceptable, and that self-government was both necessary and achievable.</div>
+      <div class="peel-line"><b>Evidence —</b> The Japanese Occupation had shattered the myth of British superiority, India and Indonesia had already won independence, and the MCP was actively fighting colonial rule.</div>
+      <div class="peel-line"><b>Explain —</b> Seeing the British defeated by an Asian power, and seeing neighbouring colonies successfully gain independence, removed people's sense that colonial rule was permanent or deserved. Communism also offered an alternative, more equal vision of society.</div>
+      <div class="peel-line"><b>Link —</b> This growing loss of respect for colonial rule pushed more people in Singapore to demand self-government.</div>
+    </div>
+  </div>
+
+  <h3 class="section-title">7.2 · How did the British try to win local support?</h3>
+  <details class="card">
+    <summary><span>Housing, food, industry &amp; the economy</span><span class="plus">+</span></summary>
+    <div class="body">
+      <div class="twocol">
+        <div class="box"><h4>Housing shortages</h4><ul><li>The Singapore Improvement Trust (SIT) built over 20,000 housing and shop units (1947–1959).</li></ul></div>
+        <div class="box"><h4>Food shortages</h4><ul><li>People's Restaurants offered affordable meals — 10 by 1946.</li></ul></div>
+        <div class="box"><h4>Industrial unrest</h4><ul><li>1947, the "Year of Strikes": 300+ strikes involving ~30,000 workers.</li><li>From 1947, trade unions had to register, letting the government monitor and restrict them.</li></ul></div>
+        <div class="box"><h4>Rebuilding the economy</h4><ul><li>Ports were repaired, restoring Singapore as a trading hub as demand for tin and rubber grew.</li></ul></div>
+      </div>
+      <div class="box" style="margin-top:12px;">
+        <h4>Allowing local political participation</h4>
+        <p style="margin:0;">The British introduced elections in 1948 for the Legislative Council — a first, though most of Singapore's ~960,000 people (only British subjects) were still not eligible to vote.</p>
+      </div>
+    </div>
+  </details>
+
+  <div class="peel-prompt">
+    <p class="q">Explain: Why did the British try to win local support after World War II?</p>
+    <button class="reveal-btn" onclick="toggleReveal(this)">Reveal PEEL answer</button>
+    <div class="peel-answer">
+      <div class="peel-line p"><b>Point —</b> The British acted to address local discontent and prove they were still fit to rule after their wartime defeat.</div>
+      <div class="peel-line"><b>Evidence —</b> They tackled housing (SIT built 20,000+ units), food shortages (People's Restaurants), industrial unrest (union registration laws), the economy (rebuilding ports), and allowed limited political participation (1948 elections).</div>
+      <div class="peel-line"><b>Explain —</b> After the humiliation of surrendering to Japan, the British needed to restore their legitimacy and prevent unrest — especially communist-linked strikes — from spreading, so addressing material grievances and offering limited political participation was meant to placate the population.</div>
+      <div class="peel-line"><b>Link —</b> These measures show the British responding defensively to changing local attitudes, though they still gave up very little real political power.</div>
+    </div>
+  </div>
+
+  <h3 class="section-title">7.3 · Why were there riots in the early 1950s?</h3>
+  <div class="mnemonic"><span class="icon">🧩</span><span><b>Memory hook — the "3 R's":</b> Religion (Maria Hertogh) → Regulation (Anti-NS) → Rights at work (Hock Lee).</span></div>
+  <details class="card">
+    <summary><span>Maria Hertogh Riots (1950)</span><span class="plus">+</span></summary>
+    <div class="body">
+      <p><b>Perceived discrimination by British rulers.</b> Maria Hertogh, a Dutch girl raised by a Muslim mother, was ordered by the courts to be returned to her birth parents and placed in a Catholic convent while awaiting return to the Netherlands; newspapers sensationalised the case.</p>
+      <p>The Muslim community felt their religion was disrespected and that the British sided with the Dutch over locals — sparking riots.</p>
+    </div>
+  </details>
+  <details class="card">
+    <summary><span>Anti-National Service Riots (1954)</span><span class="plus">+</span></summary>
+    <div class="body">
+      <p><b>Unhappiness with government policy.</b> The National Service Ordinance (1954) would disrupt students' education. Chinese-medium school students felt this was unfair, especially since their schools received far less support than English-medium schools.</p>
+      <div class="peel-prompt" style="margin-top:14px;">
+        <p class="q">Complete: This policy upset...</p>
+        <button class="reveal-btn" onclick="toggleReveal(this)">Reveal answer</button>
+        <div class="peel-answer">
+          <div class="peel-line p"><b>Point —</b> ...Chinese-medium school students, who felt targeted and neglected.</div>
+          <div class="peel-line"><b>Evidence —</b> National Service would disrupt their education, and their schools already received far less support from the British than English-medium schools.</div>
+          <div class="peel-line"><b>Explain —</b> Students felt it was unjust to be conscripted to serve a government that had invested so little in their education, deepening resentment of British policy.</div>
+          <div class="peel-line"><b>Link —</b> This led secondary students from Chinese-medium schools to protest, forcing the British to close schools.</div>
+        </div>
+      </div>
+    </div>
+  </details>
+  <details class="card">
+    <summary><span>Hock Lee Bus Riots (1955)</span><span class="plus">+</span></summary>
+    <div class="body">
+      <p><b>Poor working conditions.</b> Workers of the Singapore Bus Workers' Union (SBWU) at Hock Lee went on strike over unfair treatment compared to a rival union; the company dismissed 229 workers instead of negotiating.</p>
+      <div class="peel-prompt" style="margin-top:14px;">
+        <p class="q">Complete: This angered the...</p>
+        <button class="reveal-btn" onclick="toggleReveal(this)">Reveal answer</button>
+        <div class="peel-answer">
+          <div class="peel-line p"><b>Point —</b> ...bus workers and Chinese middle school students who supported them.</div>
+          <div class="peel-line"><b>Evidence —</b> 229 workers were dismissed instead of having their grievances addressed; students who distrusted the Labour Front government joined the protest.</div>
+          <div class="peel-line"><b>Explain —</b> Workers felt the company and government were not protecting their interests, while students saw it as another example of the government siding with employers over ordinary people.</div>
+          <div class="peel-line"><b>Link —</b> This anger fuelled violent clashes with police — four people were killed and many injured.</div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <div class="peel-prompt">
+    <p class="q">Explain: Why did riots break out in Singapore in the early 1950s?</p>
+    <button class="reveal-btn" onclick="toggleReveal(this)">Reveal PEEL answer</button>
+    <div class="peel-answer">
+      <div class="peel-line p"><b>Point —</b> Riots broke out because of perceived discrimination, unpopular government policy, and poor working conditions.</div>
+      <div class="peel-line"><b>Evidence —</b> The Maria Hertogh Riots (1950) arose from perceived religious discrimination; the Anti-National Service Riots (1954) arose from anger at the National Service Ordinance; the Hock Lee Bus Riots (1955) arose from the unfair dismissal of workers.</div>
+      <div class="peel-line"><b>Explain —</b> In each case, a specific grievance — religious, policy-based or labour-related — combined with wider anti-colonial sentiment and distrust of British-linked authorities, causing frustration to erupt into violence.</div>
+      <div class="peel-line"><b>Link —</b> These riots reflected deepening dissatisfaction with colonial rule and pushed both the British and local leaders toward granting greater self-government.</div>
+    </div>
+  </div>
+
+  <h3 class="section-title">7.4 · The Rendel Constitution &amp; the 1955 Elections</h3>
+  <details class="card">
+    <summary><span>Limited self-government</span><span class="plus">+</span></summary>
+    <div class="body">
+      <p>Sir George Rendel led a commission to give locals a bigger role in government. It recommended limited self-government (1955): a Council of Ministers with a local Chief Minister and 5 other local ministers, controlling education, health, housing, trade and industry — while the British kept control of internal security and foreign affairs.</p>
+      <p>David Marshall (Labour Front) became Singapore's 1st Chief Minister, leading a coalition with the Alliance Party.</p>
+    </div>
+  </details>
+  <details class="card">
+    <summary><span>The 1948 elections</span><span class="plus">+</span></summary>
+    <div class="body">
+      <p>The British allowed some locals to be elected into the <b>Legislative Council</b> (which made laws and discussed government policies) — 6 seats were up for election.</p>
+      <ul class="plain">
+        <li>Only British subjects were eligible to vote; registration was not automatic; voting was not compulsory.</li>
+        <li>About 14,000 voters took part in total.</li>
+        <li>The <b>Singapore Progressive Party</b> won 3 seats; Independents won the other 3.</li>
+      </ul>
+    </div>
+  </details>
+  <details class="card">
+    <summary><span>1948 vs 1955 elections</span><span class="plus">+</span></summary>
+    <div class="body">
+      <table class="data">
+        <tr><th></th><th>1948</th><th>1955</th></tr>
+        <tr><td>Voter eligibility</td><td>British subjects only</td><td>Broader; registration automatic</td></tr>
+        <tr><td>Voting</td><td>Not compulsory</td><td>Not compulsory</td></tr>
+        <tr><td>Total votes</td><td class="num">~14,000</td><td class="num">~160,000</td></tr>
+      </table>
+      <p>The PAP and Labour Front campaigned hard — house visits, pamphlets, rallies, public speeches — drawing support through their anti-colonial stance and promises to improve workers' welfare.</p>
+    </div>
+  </details>
+  <details class="card">
+    <summary><span>1955 election results</span><span class="plus">+</span></summary>
+    <div class="body">
+      <table class="data">
+        <tr><th>Party</th><th>Seats won</th></tr>
+        <tr><td>Labour Front</td><td class="num">10 / 17 <b>(winner)</b></td></tr>
+        <tr><td>Singapore Progressive Party</td><td class="num">4 / 22</td></tr>
+        <tr><td>People's Action Party</td><td class="num">3 / 4</td></tr>
+        <tr><td>Alliance Party</td><td class="num">3 / 5</td></tr>
+        <tr><td>Democratic Party</td><td class="num">2 / 20</td></tr>
+        <tr><td>Independents</td><td class="num">3 / 10</td></tr>
+      </table>
+      <p style="margin-top:6px;"><b>SPP</b> (founded 1947) favoured gradual self-government, working with the British — it also championed equal treatment for local and European civil servants and pushed for retirement financial security (pensions) for workers. <b>Labour Front</b> (founded 1954, led by David Marshall) pushed for immediate self-government and workers' welfare. <b>PAP</b> (founded November 1954 by Lee Kuan Yew, Dr Goh Keng Swee, Dr Toh Chin Chye, S. Rajaratnam and Kenneth Michael Byrne) was multiracial, anti-colonial, and sought support from unions and Chinese-medium schools.</p>
+      <div class="twocol" style="margin-top:10px;">
+        <div class="box">
+          <h4>SPP's campaign promises</h4>
+          <ul>
+            <li>Six years of free, bilingual primary education.</li>
+            <li>Expand free medical services.</li>
+            <li>Build low-cost housing, clear slums.</li>
+            <li>Keep income tax unchanged.</li>
+            <li>Malayanise the Civil Service.</li>
+            <li>Homes for underprivileged families.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Labour Front's campaign promises</h4>
+          <ul>
+            <li>Immediate self-government.</li>
+            <li>Citizenship for permanent residents.</li>
+            <li>Repeal Emergency Regulations.</li>
+            <li>Build a welfare state; low-interest loans.</li>
+            <li>Clear slums; more hospitals/clinics.</li>
+            <li>Financial aid for the unemployed; minimum wage.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <h3 class="section-title">Journey Towards Merdeka</h3>
+  <details class="card">
+    <summary><span>The Hock Lee Bus Riots &amp; Marshall's dilemma</span><span class="plus">+</span></summary>
+    <div class="body">
+      <p>Both Lee Kuan Yew (legal advisor to SBWU) and Fong Swee Suan (linked to the riots) were connected to the Legislative Assembly — showing how entangled politics and the unions were.</p>
+      <p>Marshall did not want to use force on rioters but also needed to restore order. He eventually negotiated an agreement between the unions and Hock Lee Bus Company — dismissed workers got their jobs back. Because he was sympathetic to the rioters and avoided strong action against communist leaders, the British viewed him unfavourably.</p>
+    </div>
+  </details>
+  <details class="card">
+    <summary><span>First Merdeka Talks (1956) — failed</span><span class="plus">+</span></summary>
+    <div class="body">
+      <p>Marshall launched Merdeka Week (12 March 1956) and led talks in London, aiming for full internal self-government by 1957 and greater control over defence and external affairs. He vowed to resign if talks failed.</p>
+      <div class="box">
+        <h4>Why the talks failed</h4>
+        <ul>
+          <li>The British were unimpressed by Marshall's weak handling of the Hock Lee Bus Riots.</li>
+          <li>They doubted the Labour Front's ability to maintain order and deal with the communist threat.</li>
+          <li>Britain wanted a strong, stable government to protect its economic and defence interests.</li>
+        </ul>
+      </div>
+      <p>True to his word, Marshall resigned as Chief Minister.</p>
+    </div>
+  </details>
+  <details class="card">
+    <summary><span>Lim Yew Hock &amp; the Chinese Middle School Students' Riots (1956)</span><span class="plus">+</span></summary>
+    <div class="body">
+      <p>Lim Yew Hock succeeded Marshall as 2nd Chief Minister. His goals: crush the communist threat (where Marshall had failed) and gain British trust by proving Singapore could control communism.</p>
+      <p>His government banned the Singapore Chinese Middle School Students' Union, sparking protests. When demonstrations turned violent, Malayan troops were called in and students were tear-gassed. The riots lasted 3 days, killed 13 people, and over 900 were arrested — including union leaders and PAP members Lim Chin Siong and Fong Swee Suan.</p>
+    </div>
+  </details>
+  <details class="card">
+    <summary><span>Second Merdeka Talks (1957) — success</span><span class="plus">+</span></summary>
+    <div class="body">
+      <p>Led by Lim Yew Hock, aiming for full control over internal matters including internal security.</p>
+      <div class="box">
+        <h4>Why the talks succeeded</h4>
+        <ul>
+          <li>The British were pleased with Lim Yew Hock's decisive handling of the riots.</li>
+          <li>He showed willingness to compromise and recognised British concerns about communism.</li>
+        </ul>
+      </div>
+      <p>The talks secured full internal self-government for Singapore.</p>
+    </div>
+  </details>
+
+  <div class="peel-prompt">
+    <p class="q">Explain: Why did the First Merdeka Talks (1956) fail while the Second Merdeka Talks (1957) succeeded?</p>
+    <button class="reveal-btn" onclick="toggleReveal(this)">Reveal PEEL answer</button>
+    <div class="peel-answer">
+      <div class="peel-line p"><b>Point —</b> The outcome of each round of talks depended on whether the British trusted the Singapore government to control internal security, especially the communist threat.</div>
+      <div class="peel-line"><b>Evidence —</b> Marshall's weak handling of the Hock Lee Bus Riots left the British doubting the Labour Front's ability to maintain order, so the First Talks failed; Lim Yew Hock's firm handling of the 1956 riots and willingness to compromise convinced the British Singapore was ready, so the Second Talks succeeded.</div>
+      <div class="peel-line"><b>Explain —</b> The British were mainly concerned with protecting their economic and defence interests and preventing communism from taking hold; only a leader who demonstrated firm control could earn enough trust to be handed internal security.</div>
+      <div class="peel-line"><b>Link —</b> This comparison shows Britain's willingness to grant self-government was tied directly to its confidence in local leaders' ability to manage internal order.</div>
+    </div>
+  </div>
+
+  <h3 class="section-title">The 1959 Election</h3>
+  <details class="card">
+    <summary><span>Election features &amp; outcome</span><span class="plus">+</span></summary>
+    <div class="body">
+      <ul class="plain">
+        <li>51 constituencies, all 51 seats contested; 13 parties and 194 candidates.</li>
+        <li>Compulsory voting introduced for the first time.</li>
+        <li>The 1957 Citizenship Ordinance gave ~320,000 residents (including 220,000 foreign-born Chinese) the right to vote.</li>
+        <li>525,000 voters in total — a huge jump from 160,000 in 1955.</li>
+      </ul>
+      <table class="data">
+        <tr><th>Party</th><th>Seats</th></tr>
+        <tr><td>People's Action Party</td><td class="num">43 / 51 <b>(winner)</b></td></tr>
+        <tr><td>Singapore People's Alliance (formerly Labour Front)</td><td class="num">4</td></tr>
+      </table>
+      <p>In 1959, internal self-government began with the PAP forming the government and Lee Kuan Yew as Singapore's first Prime Minister. The National Flag, State Crest, National Anthem and new Head of State (Yusof Ishak) were unveiled on 3 December 1959.</p>
+    </div>
+  </details>
+
+  <div class="peel-prompt">
+    <p class="q">Explain: Why did the PAP win the 1959 election by such a large margin?</p>
+    <button class="reveal-btn" onclick="toggleReveal(this)">Reveal PEEL answer</button>
+    <div class="peel-answer">
+      <div class="peel-line p"><b>Point —</b> The PAP won overwhelmingly both because its main rival collapsed and because the PAP itself ran a strong, popular campaign.</div>
+      <div class="peel-line"><b>Evidence —</b> The Singapore People's Alliance (formerly Labour Front) was seen as too close to the British after the 1956 riots and was hit by a corruption scandal involving Education Minister Chew Swee Kee; its campaign was also poorly organised. Meanwhile, the PAP had charismatic leadership under Lee Kuan Yew, popular Chinese-speaking figures like Lim Chin Siong and Fong Swee Suan who appealed to workers and students, and a well-planned campaign.</div>
+      <div class="peel-line"><b>Explain —</b> Voters who wanted genuine anti-colonial leadership and integrity turned away from the Alliance's compromised image, while the PAP's clear vision and its leaders' popularity — especially among Chinese-speaking voters — gave it broad-based support across communities.</div>
+      <div class="peel-line"><b>Link —</b> This combination of a discredited rival and strong, well-organised PAP leadership resulted in the PAP capturing 43 of 51 seats.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CHAPTER 8 ================= -->
+<section class="chapter ch8" id="ch8">
+  <div class="hero ch8">
+    <div class="eyebrow">CHAPTER 8</div>
+    <h2>How did Singapore become an independent nation?</h2>
+    <p class="lede">From pursuing merger with Malaya to separating from Malaysia less than two years later — the path to full independence.</p>
+    <div class="timeline"><span>16 Sep 1963 — Merger</span><span>21 Jul 1964 — Racial Riots</span><span>9 Aug 1965 — Separation</span></div>
+    <div class="qmark">獨</div>
+  </div>
+
+  <h3 class="section-title">Merger with Malaya</h3>
+  <details class="card">
+    <summary><span>Why did the PAP pursue merger?</span><span class="plus">+</span></summary>
+    <div class="body">
+      <div class="box" style="margin-bottom:12px;">
+        <h4>To gain political independence from the British</h4>
+        <ul>
+          <li>Merger was seen as the only way to gain independence; the British were reluctant to let Singapore go because of the Cold War.</li>
+          <li>Britain feared Southeast Asia falling to communism and wanted a new federation (Malaya, Singapore, North Borneo, Sarawak) to keep the region politically stable.</li>
+          <li>The British believed Malaya could help suppress communism and protect their interests, so the PAP judged that independence could only come through joining this federation.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h4>To ensure economic survival</h4>
+        <ul>
+          <li>Singapore lacked natural resources, had a fast-growing population needing jobs, and faced declining entrepôt trade.</li>
+          <li>Malayan tariffs on Singapore-made goods reduced trade between the two.</li>
+          <li>Merger promised a larger economic base and a common market — untaxed access to the Malayan hinterland, more demand for goods, and more jobs.</li>
+        </ul>
+        <p style="margin:10px 0 0; font-size:.92rem; color:var(--ink-soft);"><b>How a tariff worked:</b> a $10 pair of Singapore-made shoes cost $12.50 in Malaya once a 25% tariff was added — making Singapore goods less competitive there.</p>
+        <div class="quote-src">"It is the hinterland which produces the rubber and tin that keep our shop-window economy going... Without merger... our economic position will slowly and steadily get worse." — adapted from Lee Kuan Yew's <i>The Battle for Merger</i> radio talks, 1961</div>
+      </div>
+    </div>
+  </details>
+
+  <div class="peel-prompt">
+    <p class="q">Explain: Why did the PAP government pursue merger with Malaya?</p>
+    <button class="reveal-btn" onclick="toggleReveal(this)">Reveal PEEL answer</button>
+    <div class="peel-answer">
+      <div class="peel-line p"><b>Point —</b> The PAP pursued merger mainly for political independence and economic survival.</div>
+      <div class="peel-line"><b>Evidence —</b> Politically, the British would only consider granting independence within a new anti-communist federation. Economically, Singapore lacked resources, faced declining entrepôt trade, and suffered from Malayan tariffs on its goods.</div>
+      <div class="peel-line"><b>Explain —</b> Since the British linked independence to being part of a stable, communism-resistant federation, merger was the only realistic route to full self-rule. At the same time, joining Malaya's larger economy through a common market would remove tariffs, boost trade and create jobs, solving Singapore's long-term economic problems.</div>
+      <div class="peel-line"><b>Link —</b> Merger therefore offered the PAP a way to achieve both political independence and economic security at the same time.</div>
+    </div>
+  </div>
+
+  <details class="card">
+    <summary><span>Malaya vs. Malaysia — and who was Tunku Abdul Rahman?</span><span class="plus">+</span></summary>
+    <div class="body">
+      <div class="box" style="margin-bottom:12px;">
+        <h4>Malaya ≠ Malaysia</h4>
+        <p style="margin:0;"><b>Malaya</b> was the British-colonial name for the region (Peninsular Malaysia + Singapore) until independence in 1957. <b>Malaysia</b> is the name of the new country formed in 1963, when Malaya joined with Sabah and Sarawak — and, until 1965, Singapore.</p>
+      </div>
+      <div class="box">
+        <h4>Tunku Abdul Rahman</h4>
+        <ul>
+          <li>7th son of the Sultan of Kedah.</li>
+          <li>Studied Law &amp; History at Cambridge University, graduating in 1925.</li>
+          <li>Joined the Kedah Civil Service, later became a Deputy Public Prosecutor (1949).</li>
+          <li>Became President of UMNO (1951) and Chief Minister of the Federation of Malaya (1955).</li>
+          <li>Supervised Malaya's independence process, achieved on 31 August 1957.</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <details class="card">
+    <summary><span>Malaya's initial response &amp; why Tunku changed his mind</span><span class="plus">+</span></summary>
+    <div class="body">
+      <div class="box" style="margin-bottom:12px;">
+        <h4>Tunku Abdul Rahman was initially reluctant</h4>
+        <ul>
+          <li>Worried Singapore's mostly Chinese population might resist a Malay Sultan, the Malay language, or Islam as state religion.</li>
+          <li>Feared too many Chinese would upset Malaya's racial balance.</li>
+          <li>Suspected many Chinese were sympathetic to communists, recalling the tough fight during the Emergency.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h4>Why he changed his mind</h4>
+        <ul>
+          <li><b>Growing communism:</b> Tunku feared the PAP could be taken over by pro-communist members, producing a Singapore government unwilling to agree to merger on Malaya's terms. He realised Singapore would be safer under Malaysian control.</li>
+          <li><b>Split within the PAP:</b> Ong Eng Guan, expelled from PAP for pro-communist leanings, won the Hong Lim by-election as an independent. This alarmed Tunku that radicals might take over the PAP and turn Singapore communist, so he agreed to merger to help suppress communism.</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <div class="peel-prompt">
+    <p class="q">Explain: Why did Tunku Abdul Rahman change his mind and support merger with Singapore?</p>
+    <button class="reveal-btn" onclick="toggleReveal(this)">Reveal PEEL answer</button>
+    <div class="peel-answer">
+      <div class="peel-line p"><b>Point —</b> Tunku's support grew out of fear that Singapore could become a base for communism if left outside Malaya's control.</div>
+      <div class="peel-line"><b>Evidence —</b> He worried the PAP might be taken over by pro-communist members, and Ong Eng Guan's expulsion from the PAP followed by his win in the Hong Lim by-election alarmed Tunku about a possible communist takeover of the party.</div>
+      <div class="peel-line"><b>Explain —</b> Tunku reasoned that bringing Singapore into the federation would let the Malaysian government directly control and suppress communist elements there, rather than risk communism spreading from an unstable, independent Singapore into Malaya.</div>
+      <div class="peel-line"><b>Link —</b> His shift shows that Cold War fears of communism, more than goodwill toward Singapore, ultimately drove Malaya to accept merger.</div>
+    </div>
+  </div>
+
+  <details class="card">
+    <summary><span>Opposition: the Barisan Sosialis</span><span class="plus">+</span></summary>
+    <div class="body">
+      <p>Lim Chin Siong and Fong Swee Suan felt merger might disadvantage Singapore and questioned whether Singaporeans would get equal rights to Malayans. They split from the PAP to form the <b>Barisan Sosialis</b> on 13 Aug 1961 (Dr Lee Siew Choh, Chairman; Lim Chin Siong, Secretary-General) — demanding a full, unreserved merger to prevent discrimination.</p>
+    </div>
+  </details>
+
+  <details class="card">
+    <summary><span>Contest for merger: PAP vs Barisan Sosialis</span><span class="plus">+</span></summary>
+    <div class="body">
+      <div class="twocol">
+        <div class="box">
+          <h4>PAP's campaign</h4>
+          <ul>
+            <li>Year-long campaign to win support for its version of merger.</li>
+            <li>LKY's 12 radio talks ("The Battle for Merger", Sep–Oct 1961) in English, Malay and Mandarin — reaching Singapore, Brunei, Malaya, North Borneo and Sarawak.</li>
+            <li>Exhibitions (e.g. "We the People's of Malaysia") showcased close cultural and social ties.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Barisan Sosialis's campaign</h4>
+          <ul>
+            <li>Speeches at mass rallies to win support.</li>
+            <li>Accepted invitations to debate merger issues in radio forums alongside other parties.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="card">
+    <summary><span>The people's decision: the 1962 Referendum</span><span class="plus">+</span></summary>
+    <div class="body">
+      <p>A referendum was held on 1 Sep 1962. The PAP urged voters to choose Option A (its version of merger); the Barisan Sosialis rejected all three options and urged blank votes in protest.</p>
+      <table class="data">
+        <tr><th>Result</th><th>Share</th></tr>
+        <tr><td>Option A</td><td class="num">71%</td></tr>
+        <tr><td>Blank votes</td><td class="num">25%</td></tr>
+        <tr><td>Options B &amp; C / rejected papers</td><td class="num">~4%</td></tr>
+      </table>
+      <p>The result showed people favoured the PAP's version of merger over the Barisan Sosialis's stance. In Feb 1963, <b>Operation Coldstore</b> further weakened the Barisan Sosialis — the Internal Security Council arrested over 100 people (including key leaders) accused of sabotaging Malaysia's formation and planning an uprising.</p>
+    </div>
+  </details>
+
+  <div class="peel-prompt">
+    <p class="q">Explain: What was the significance of the 1962 referendum results?</p>
+    <button class="reveal-btn" onclick="toggleReveal(this)">Reveal PEEL answer</button>
+    <div class="peel-answer">
+      <div class="peel-line p"><b>Point —</b> The referendum results showed that most Singaporeans backed the PAP's vision of merger over the Barisan Sosialis's opposition.</div>
+      <div class="peel-line"><b>Evidence —</b> 71% voted for Option A (the PAP's proposed terms), while 25% cast blank votes as the Barisan Sosialis had urged, and only a small share chose Options B or C.</div>
+      <div class="peel-line"><b>Explain —</b> The strong majority for Option A gave the PAP a clear mandate to proceed with merger on its own terms, while the sizeable blank-vote share revealed that a meaningful minority still distrusted or opposed the PAP's approach.</div>
+      <div class="peel-line"><b>Link —</b> The result legitimised the PAP's push for merger, and together with Operation Coldstore, effectively weakened the Barisan Sosialis's political influence.</div>
+    </div>
+  </div>
+
+  <details class="card">
+    <summary><span>Terms of merger (16 Sep 1963)</span><span class="plus">+</span></summary>
+    <div class="body">
+      <ul class="plain">
+        <li>Singapore could hold its own elections to choose its state government.</li>
+        <li>Singapore's state government controlled education and labour.</li>
+        <li>The Central Government (Kuala Lumpur) controlled defence, foreign affairs and internal security.</li>
+        <li>All Singapore citizens automatically became Malaysian citizens but could not vote in Malaysian elections.</li>
+      </ul>
+    </div>
+  </details>
+
+  <h3 class="section-title">Reasons for Separation</h3>
+  <p>Singapore was part of Malaysia for less than two years. Economic disagreements and political differences between the Federal Government and Singapore's state government led to separation on 9 August 1965.</p>
+
+  <details class="card">
+    <summary><span>Economic disagreements</span><span class="plus">+</span></summary>
+    <div class="body">
+      <div class="box" style="margin-bottom:12px;">
+        <h4>Revenue contribution</h4>
+        <p style="margin:0;">Singapore had agreed to contribute 40% of its revenue to the Federal government. The Federal government later raised this to 60%, citing increased defence spending due to Konfrontasi — which Singapore felt was unfair.</p>
+      </div>
+      <div class="box">
+        <h4>The common market</h4>
+        <p style="margin:0;">Singapore expected tariffs on its goods to be removed, but the Federal Government delayed setting up the common market, continuing to protect Malayan industries with tariffs.</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="card">
+    <summary><span>Political disagreements</span><span class="plus">+</span></summary>
+    <div class="body">
+      <div class="box" style="margin-bottom:12px;">
+        <h4>Different political beliefs</h4>
+        <p style="margin:0;">The PAP was multiracial, believing in representing all communities equally. The Federal government (the Alliance Party — UMNO, MCA, MIC) aimed to protect the rights of each party's own race.</p>
+      </div>
+      <div class="box">
+        <h4>Different treatment of races</h4>
+        <p style="margin:0;">The Federal government gave Malays special privileges in jobs, business and education (e.g. reserved government jobs, free education) to improve their welfare. The PAP government objected to this special treatment.</p>
+      </div>
+    </div>
+  </details>
+
+  <h3 class="section-title">The 1964 Racial Riots</h3>
+  <details class="card">
+    <summary><span>What happened</span><span class="plus">+</span></summary>
+    <div class="body">
+      <p>On 21 July 1964, an estimated 20,000 Muslims gathered at the Padang to commemorate Prophet Muhammad's birthday. Clashes broke out during the procession along Geylang Road and Guillemard Road and spread as news travelled. 23 people died and 454 were injured.</p>
+    </div>
+  </details>
+  <details class="card">
+    <summary><span>Causes of the riots</span><span class="plus">+</span></summary>
+    <div class="body">
+      <div class="box" style="margin-bottom:12px;">
+        <h4>Political differences in the treatment of races</h4>
+        <p style="margin:0;">The PAP wanted a multicultural Malaysia treating all races equally; UMNO believed Malays should get special privileges. Some UMNO leaders accused the PAP of neglecting Malay interests via the newspaper <i>Utusan Melayu</i>, creating tension between Malays and Chinese.</p>
+      </div>
+      <div class="box">
+        <h4>Rivalry between PAP and UMNO</h4>
+        <p style="margin:0;">After merger, both parties contested each other's elections. The Alliance Party failed to win any seat in Singapore's 1963 elections, even in Malay-dominated constituencies, and the PAP's participation in the 1964 Federal Elections further strained relations. UMNO leaders in Singapore stirred anti-PAP feelings during the Prophet's birthday celebrations, helping spark the riots.</p>
+      </div>
+    </div>
+  </details>
+
+  <div class="peel-prompt">
+    <p class="q">Explain: Why did the 1964 racial riots break out?</p>
+    <button class="reveal-btn" onclick="toggleReveal(this)">Reveal PEEL answer</button>
+    <div class="peel-answer">
+      <div class="peel-line p"><b>Point —</b> The riots broke out because of political differences over racial treatment and rivalry between the PAP and UMNO.</div>
+      <div class="peel-line"><b>Evidence —</b> The PAP's multiracial stance clashed with UMNO's belief in Malay privileges, with <i>Utusan Melayu</i> accusing the PAP of neglecting Malay interests; the two parties had also been contesting each other's elections since merger, raising tensions ahead of the Prophet Muhammad's birthday procession on 21 July 1964.</div>
+      <div class="peel-line"><b>Explain —</b> These political and electoral rivalries stirred up communal anxieties, so when speeches attacking the PAP were made during the religious procession, existing racial and political tension erupted into violence.</div>
+      <div class="peel-line"><b>Link —</b> The riots convinced Tunku that the differences between Singapore and the Federal Government were irreconcilable, pushing the two governments toward eventual separation.</div>
+    </div>
+  </div>
+
+  <div class="peel-prompt">
+    <p class="q">Explain: Why did Singapore separate from Malaysia?</p>
+    <button class="reveal-btn" onclick="toggleReveal(this)">Reveal PEEL answer</button>
+    <div class="peel-answer">
+      <div class="peel-line p"><b>Point —</b> Singapore separated from Malaysia because economic and political disagreements between the Federal and State governments became irreconcilable, culminating in the 1964 racial riots.</div>
+      <div class="peel-line"><b>Evidence —</b> Economically, the Federal government raised Singapore's revenue contribution from 40% to 60% and delayed the common market. Politically, the PAP's multiracial stance clashed with the Alliance's Malay-privilege policies, and rivalry between the PAP and UMNO in each other's elections fed into the racial riots of July 1964, which killed 23 and injured 454.</div>
+      <div class="peel-line"><b>Explain —</b> These economic disputes made Singapore feel it was being treated unfairly within the federation, while the political and racial tensions convinced Tunku Abdul Rahman that differences between the two governments could not be resolved and that further unrest would spread across the Federation.</div>
+      <div class="peel-line"><b>Link —</b> Believing separation was the only way to prevent further disorder, Tunku moved for Singapore to leave — and on 9 August 1965, Lee Kuan Yew announced Singapore's separation, with the Independence of Singapore Agreement making Singapore a fully independent nation.</div>
+    </div>
+  </div>
+
+  <details class="card">
+    <summary><span>Separation — 9 August 1965</span><span class="plus">+</span></summary>
+    <div class="body">
+      <p>The growing unrest and disagreement convinced Tunku that the best resolution was for Singapore to leave Malaysia. On Monday, 9 August 1965, live on television, Prime Minister Lee Kuan Yew announced that Singapore was no longer part of Malaysia. With the signing of the Independence of Singapore Agreement, Singapore became an independent nation.</p>
+    </div>
+  </details>
+</section>
+
+</main>
+
+<footer>Sec 2 History revision — Chapters 6, 7 &amp; 8 · Tap a topic to expand, and try answering the PEEL prompts before revealing the model answer.</footer>
+
+<button class="fc-launcher" id="fcLauncher">🧠 Flashcards</button>
+
+<div class="fc-modal" id="fcModal">
+  <div class="fc-panel">
+    <div class="fc-panel-head">
+      <h3 id="fcTitle">Flashcards</h3>
+      <button class="fc-close" id="fcClose">✕</button>
+    </div>
+    <div class="fc-progress" id="fcProgress">Card 1 / 1</div>
+    <div class="fc-stage">
+      <div class="fc-card" id="fcCard">
+        <div class="fc-face front"><span class="fc-tag" id="fcTagFront">QUESTION</span><span id="fcQ"></span></div>
+        <div class="fc-face back"><span class="fc-tag" id="fcTagBack">ANSWER</span><span id="fcA"></span></div>
+      </div>
+    </div>
+    <div class="fc-controls">
+      <button class="fc-btn" id="fcPrev">← Prev</button>
+      <button class="fc-btn" id="fcShuffle">🔀 Shuffle</button>
+      <button class="fc-btn primary" id="fcNext">Next →</button>
+    </div>
+    <p class="fc-hint">Tap the card to flip it. Try to answer before you flip!</p>
+  </div>
+</div>
+
+<script>
+  const buttons = document.querySelectorAll('nav.tabs button');
+  const chapters = document.querySelectorAll('section.chapter');
+  let currentChapter = 6;
+  function setChapter(n){
+    currentChapter = n;
+    document.body.className = 'ctx'+n;
+    buttons.forEach(b=>b.classList.toggle('active', b.dataset.ch==n));
+    chapters.forEach(c=>c.classList.remove('active'));
+    document.getElementById('ch'+n).classList.add('active');
+  }
+  buttons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      setChapter(btn.dataset.ch);
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+  setChapter(6);
+
+  function toggleReveal(btn){
+    const ans = btn.nextElementSibling;
+    const shown = ans.classList.toggle('shown');
+    btn.textContent = shown ? 'Hide answer' : 'Reveal PEEL answer';
+  }
+
+  /* ---------------- Flashcard decks ---------------- */
+  const decks = {
+    6: [
+      ["When did the Japanese Occupation begin?","15 February 1942, right after the British surrendered."],
+      ["What were the Japanese's two broad methods of control?","Using force, and winning loyalty."],
+      ["What was Operation Sook Ching?","A mass screening to identify and kill anti-Japanese elements among the Chinese; 25,000–50,000 killed."],
+      ["Why were Chinese businessmen targeted?","They had earlier funded China's war effort against Japan — the OCA was forced to pay 50 million Straits dollars."],
+      ["What were the Kempeitai?","The Japanese Military Police, who arrested and tortured anti-Japanese suspects."],
+      ["Name the 3 ways the Japanese tried to win loyalty.","Propaganda, providing benefits, and imposing Japanese culture."],
+      ["What was the Greater East Asia Co-Prosperity Sphere?","Propaganda portraying Asians as freed from Western colonial powers under Japan."],
+      ["Who led the Indian National Army, backed by Japan?","Subhas Chandra Bose."],
+      ["What was Nippon Seishin?","The 'Japanese spirit' — promoted through songs, bowing to the Emperor's portrait, and sports like judo/kendo."],
+      ["Which relocation settlement succeeded, and why?","Endau, Johor — rich soil and ample water."],
+      ["Which relocation settlement failed, and why?","Bahau, Negeri Sembilan — hilly, poor soil; people ate rats and maggots."],
+      ["What were the main causes of death during the Occupation?","Beriberi, pneumonia and dysentery."],
+      ["What did the MPAJA do?","Worked with the British; carried out sabotage and distributed anti-Japanese materials."],
+      ["Who was Elizabeth Choy?","She smuggled food, money, medicine and messages to British POWs; was tortured but revealed nothing."],
+      ["Who was Lim Bo Seng linked to?","Force 136, a secret British organisation for intelligence and sabotage."],
+      ["PEEL: Why was life difficult during the Occupation?","Food/medical shortages, disease and forced relocation (e.g. Bahau) — caused by disrupted trade and wartime conditions — made daily survival the defining struggle."],
+      ["PEEL: Why did some collaborate while others resisted?","Collaboration often came from a need for safety/reward under propaganda; resistance (MPAJA, Force 136, Elizabeth Choy) came from anti-Japanese loyalty — responses were shaped by individual circumstances."]
+    ],
+    7: [
+      ["What 2 external developments made people want self-government?","Weakening of colonial rule (Japanese Occupation, India & Indonesia's independence) and growing communism (MCP, Malayan Emergency)."],
+      ["What did the SIT do to fix housing shortages?","Built over 20,000 housing and shop units (1947–1959)."],
+      ["What was 1947 called, and why?","The 'Year of Strikes' — 300+ strikes, ~30,000 workers."],
+      ["How many seats were contested in the 1948 election?","6 seats in the Legislative Council."],
+      ["Who won the 1948 elections?","Singapore Progressive Party (3 seats) and Independents (3 seats)."],
+      ["What did the SPP campaign for?","Equal treatment of local/European civil servants and financial security (pensions) for workers."],
+      ["What sparked the Maria Hertogh Riots (1950)?","A Muslim-raised Dutch girl was ordered returned to her birth parents; Muslims felt religion disrespected."],
+      ["What sparked the Anti-National Service Riots (1954)?","The National Service Ordinance, opposed by Chinese-medium school students."],
+      ["What sparked the Hock Lee Bus Riots (1955)?","229 SBWU workers were dismissed instead of having grievances addressed."],
+      ["Who led the commission that produced the Rendel Constitution?","Sir George Rendel."],
+      ["What did the Rendel Constitution recommend?","Limited self-government — a Council of Ministers led by a local Chief Minister + 5 local ministers."],
+      ["Who became Singapore's 1st Chief Minister?","David Marshall (Labour Front)."],
+      ["How many votes were cast in 1955 vs 1948?","~160,000 in 1955 vs ~14,000 in 1948."],
+      ["Who founded the PAP, and when?","Lee Kuan Yew, Goh Keng Swee, Toh Chin Chye, S. Rajaratnam & Kenneth Michael Byrne, in November 1954."],
+      ["What was the 1955 election result?","Labour Front won 10/17 seats and formed the government."],
+      ["What was the goal of the First Merdeka Talks (1956)?","Full internal self-government for Singapore by 1957."],
+      ["Why did the First Merdeka Talks fail?","The British doubted the Labour Front's ability to keep order/handle communism after the Hock Lee riots."],
+      ["What did Marshall do after the talks failed?","Resigned as Chief Minister, as he had promised."],
+      ["What were Lim Yew Hock's 2 goals?","Crush the communist threat, and gain British trust."],
+      ["What triggered the 1956 Chinese Middle School Students' Riots?","The government banned the Chinese Middle School Students' Union."],
+      ["How did the 1956 riots end?","Malayan troops were called in and students tear-gassed — 3 days, 13 dead, 900+ arrested."],
+      ["Why did the Second Merdeka Talks (1957) succeed?","The British were pleased with Lim Yew Hock's firm handling of the riots and his willingness to compromise."],
+      ["How many constituencies were contested in the 1959 election?","51 — all seats contested, 13 parties, 194 candidates."],
+      ["What was introduced for the first time in 1959?","Compulsory voting."],
+      ["What did the 1957 Citizenship Ordinance do?","Gave ~320,000 residents (incl. 220,000 foreign-born Chinese) citizenship and the vote."],
+      ["What was the 1959 election result?","PAP won 43/51 seats; the Singapore People's Alliance won 4."],
+      ["Who became Singapore's first Prime Minister?","Lee Kuan Yew, in 1959."],
+      ["What was unveiled on 3 December 1959?","The National Flag, State Crest, National Anthem, and Head of State Yusof Ishak."],
+      ["Give 2 reasons the PAP won so heavily in 1959.","The Alliance/SPA was hurt by a corruption scandal and poor organisation; the PAP had strong leadership and popular figures like Lim Chin Siong & Fong Swee Suan."],
+      ["PEEL: Why did the British try to win local support post-WWII?","To restore legitimacy after their wartime defeat, they tackled housing, food, industrial unrest, the economy and allowed limited elections — though they kept most real power."],
+      ["PEEL: Why did riots break out in the early 1950s?","Each riot had its own trigger — religion (Maria Hertogh), policy (Anti-NS), labour (Hock Lee) — but all reflected wider anti-colonial distrust erupting into violence."],
+      ["PEEL: Why did the 1st Merdeka Talks fail but the 2nd succeed?","Marshall's weak riot-handling lost British trust (talks 1 failed); Lim Yew Hock's firm, compromising approach won British trust (talks 2 succeeded) — trust in internal-security control was the deciding factor."]
+    ],
+    8: [
+      ["What's the difference between Malaya and Malaysia?","Malaya = the colonial-era name (to 1957); Malaysia = the new federation formed in 1963."],
+      ["What 2 reasons drove the PAP to pursue merger?","Political independence from Britain, and economic survival."],
+      ["Why were the British reluctant to grant independence alone?","Cold War fears of communism spreading in Southeast Asia."],
+      ["What territories did Britain want in a new federation?","Malaya, Singapore, North Borneo, Sarawak and Brunei."],
+      ["How did the tariff example work?","A $10 Singapore-made shoe cost $12.50 in Malaya after a 25% tariff."],
+      ["Who was Tunku Abdul Rahman?","7th son of the Sultan of Kedah; Cambridge-educated; Chief Minister of Malaya from 1955; led it to independence in 1957."],
+      ["What were Tunku's initial worries about merger?","Chinese resistance to a Malay Sultan/language/Islam; upset racial balance; Chinese sympathy toward communists."],
+      ["What 2 reasons changed Tunku's mind?","Fear the PAP could turn pro-communist, and the split within PAP (Ong Eng Guan's Hong Lim by-election win)."],
+      ["Who founded the Barisan Sosialis, and when?","Lim Chin Siong & Fong Swee Suan, on 13 August 1961."],
+      ["What kind of merger did the Barisan Sosialis want?","A full, unreserved merger on equal terms."],
+      ["What were LKY's radio talks called?","'The Battle for Merger' — 12 talks (Sep–Oct 1961) in English, Malay and Mandarin."],
+      ["What were the referendum results (1 Sep 1962)?","71% chose Option A; 25% cast blank votes."],
+      ["What was Operation Coldstore?","Feb 1963 arrests of 100+ people, including Barisan Sosialis leaders, over alleged sabotage."],
+      ["When did Singapore officially join Malaysia?","16 September 1963."],
+      ["What did the Central Government (KL) control after merger?","Defence, foreign affairs and internal security."],
+      ["What revenue % dispute led to separation?","Singapore agreed to 40%, but it was raised to 60%, citing Konfrontasi defence costs."],
+      ["What 2 economic disagreements caused separation?","The revenue contribution dispute, and the delayed common market/tariffs."],
+      ["What 2 political disagreements caused separation?","Different political beliefs (multiracialism vs race-based parties) and different treatment of races."],
+      ["What sparked the 21 July 1964 riots?","Clashes during a Prophet Muhammad's birthday procession at the Padang."],
+      ["What was the toll of the 1964 riots?","23 dead, 454 injured."],
+      ["What 2 causes led to the 1964 riots?","Political differences over race treatment, and PAP–UMNO election rivalry."],
+      ["When did Singapore separate from Malaysia?","9 August 1965."],
+      ["What agreement made Singapore officially independent?","The Independence of Singapore Agreement."],
+      ["PEEL: Why did Tunku change his mind on merger?","Fear the PAP could turn communist (esp. after Ong Eng Guan's Hong Lim win) convinced Tunku that controlling Singapore was safer than leaving it independent."],
+      ["PEEL: What was the significance of the 1962 referendum?","71% for Option A gave the PAP a mandate for its version of merger; the 25% blank votes showed real, if minority, opposition — weakened further by Operation Coldstore."],
+      ["PEEL: Why did the 1964 racial riots break out?","PAP–UMNO rivalry over race policy and elections stirred communal tension, which erupted into violence during the Prophet Muhammad's birthday procession."]
+    ]
+  };
+
+  let deckOrder = [], deckIdx = 0;
+  const fcModal = document.getElementById('fcModal');
+  const fcCard = document.getElementById('fcCard');
+  const fcQ = document.getElementById('fcQ');
+  const fcA = document.getElementById('fcA');
+  const fcProgress = document.getElementById('fcProgress');
+  const fcTitle = document.getElementById('fcTitle');
+  const chapterNames = {6:'Chapter 6 · Occupation', 7:'Chapter 7 · Road to Self-Rule', 8:'Chapter 8 · Merger & Separation'};
+
+  function shuffle(arr){
+    for(let i=arr.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [arr[i],arr[j]] = [arr[j],arr[i]];
+    }
+    return arr;
+  }
+  function loadDeck(){
+    deckOrder = shuffle([...Array(decks[currentChapter].length).keys()]);
+    deckIdx = 0;
+    fcTitle.textContent = 'Flashcards — ' + chapterNames[currentChapter];
+    render();
+  }
+  function render(){
+    fcCard.classList.remove('flipped');
+    const [q,a] = decks[currentChapter][deckOrder[deckIdx]];
+    fcQ.textContent = q;
+    fcA.textContent = a;
+    fcProgress.textContent = 'Card ' + (deckIdx+1) + ' / ' + deckOrder.length;
+  }
+  document.getElementById('fcLauncher').addEventListener('click', ()=>{
+    loadDeck();
+    fcModal.classList.add('open');
+  });
+  document.getElementById('fcClose').addEventListener('click', ()=> fcModal.classList.remove('open'));
+  fcModal.addEventListener('click', (e)=>{ if(e.target===fcModal) fcModal.classList.remove('open'); });
+  fcCard.addEventListener('click', ()=> fcCard.classList.toggle('flipped'));
+  document.getElementById('fcNext').addEventListener('click', ()=>{
+    deckIdx = (deckIdx+1) % deckOrder.length; render();
+  });
+  document.getElementById('fcPrev').addEventListener('click', ()=>{
+    deckIdx = (deckIdx-1+deckOrder.length) % deckOrder.length; render();
+  });
+  document.getElementById('fcShuffle').addEventListener('click', loadDeck);
+</script>
+
+</body>
+</html>
